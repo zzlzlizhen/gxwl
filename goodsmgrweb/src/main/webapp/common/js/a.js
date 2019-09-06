@@ -1,0 +1,4 @@
+/**
+ * 
+ */
+alert("goodsmgrweb a.js");

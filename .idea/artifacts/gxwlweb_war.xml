@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gxwlweb:war">
+    <output-path>$PROJECT_DIR$/gxwlweb/target</output-path>
+    <root id="archive" name="gxwlweb.war">
+      <element id="artifact" artifact-name="gxwlweb:war exploded" />
+    </root>
+  </artifact>
+</component>
