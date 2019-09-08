@@ -41,7 +41,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatisConf.xml" />
-		<property name="mapperLocations" value="classpath*:com/remote/**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:/mapping/*.xml" />
 	</bean>
 	<!-- 通过注解@Repository把所有dao文件对应的mapper-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

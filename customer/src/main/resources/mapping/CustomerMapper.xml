@@ -19,6 +19,5 @@
 	</select>
 	<select id="getByConditionPage" parameterType="CQM" resultType="CM">
 		select uuid,customerId,pwd,showName,trueName,registerTime from users
-		
 	</select>
 </mapper>

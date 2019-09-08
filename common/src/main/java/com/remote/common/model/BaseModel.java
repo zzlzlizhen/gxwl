@@ -5,6 +5,11 @@ import com.remote.pageutil.Page;
 public class BaseModel {
 	private Long uuid;
 	private Page page;
+
+	public BaseModel(){
+		this.page = new Page();
+	}
+
 	public Page getPage() {
 		return page;
 	}
