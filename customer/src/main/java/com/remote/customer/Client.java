@@ -29,10 +29,17 @@ public class Client {
 		 */
 //		c.customerDao.create(cm);
 		CustomerQueryModel qm = new CustomerQueryModel();
-	
-		Page<CustomerModel> p = t.customerService.getByConditionPage(qm);
-	 
-		System.out.println("cvList"+ p);
+		qm.getPage().setPageShow(4);
+		qm.getPage().setNowPage(1);
+		System.out.println(qm.getPage());
+		try {
+			Page<CustomerModel> p = t.customerService.getByConditionPage(qm);
+			System.out.println("cvList");
+			System.out.println("cvList"+ p);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 		
 		
 	}
