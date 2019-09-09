@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 
 @RequestMapping("/customer")
 @Controller
@@ -18,11 +20,12 @@ public class CustomerController {
     private ICustomerService customerService = null;
     @RequestMapping(value = "/toAdd",method = RequestMethod.GET)
     public String toAdd(){
-        return "customer/add";
+        return "/customer/add";
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String add(@ModelAttribute("cm") CustomerModel cm){
+        cm.setRegisterTime(new Date());
         customerService.create(cm);
         return "customer/sucess";
     }
@@ -65,7 +68,7 @@ public class CustomerController {
         return "customer/list";
     }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(@RequestParam("queryJsonStr")String queryJsonStr){
+    public String list(@RequestParam(value = "queryJsonStr",defaultValue = "")String queryJsonStr){
         CustomerQueryModel cqm = new CustomerQueryModel();
         customerService.getByConditionPage(cqm);
         return "customer/sucess";

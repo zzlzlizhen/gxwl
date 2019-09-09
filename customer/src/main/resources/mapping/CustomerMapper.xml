@@ -19,5 +19,13 @@
 	</select>
 	<select id="getByConditionPage" parameterType="CQM" resultType="CM">
 		select uuid,customerId,pwd,showName,trueName,registerTime from users
+		<where>
+			<if test="uuid != null">
+				where uuid = #{uuid}
+			</if>
+			<if test="customerId != null and customerId != ''">
+				and customerId = #{customerId}
+			</if>
+		</where>
 	</select>
 </mapper>
