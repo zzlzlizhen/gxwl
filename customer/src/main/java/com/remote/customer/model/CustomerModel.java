@@ -5,6 +5,7 @@ import java.util.Date;
 import com.remote.common.model.BaseModel;
 
 public class CustomerModel extends BaseModel{
+	private Long uuid;
 	private String customerId;
 	private String pwd;
 	private String showName;

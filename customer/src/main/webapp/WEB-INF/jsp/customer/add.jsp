@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>title</title>
+    <title>Add</title>
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="${pageContext.request.contextPath}/static/css/application.css" rel="stylesheet"> 
 </head>
 <body>
-
      <form action="${pageContext.request.contextPath}/customer/add" method="post">
         <table width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine">
             <tr>

@@ -41,7 +41,7 @@ public class CustomerController {
         customerService.update(cm);
         return "/customer/sucess";
     }
-    @RequestMapping(value = "/toDelete",method = RequestMethod.GET)
+    @RequestMapping(value = "/toDelete/{uuid}",method = RequestMethod.GET)
     public String toDelete(Model model,@PathVariable("uuid") Long uuid){
         CustomerModel customerModel = customerService.getByUuid(uuid);
         model.addAttribute("cm",customerModel);
@@ -54,7 +54,7 @@ public class CustomerController {
         return "/customer/sucess";
     }
     @RequestMapping(value = "/toList",method = RequestMethod.GET)
-    public String toList(@RequestParam("queryJsonStr")String queryJsonStr,@ModelAttribute("page") Page page,Model model){
+    public String toList(@RequestParam(value="queryJsonStr",defaultValue = "")String queryJsonStr,@ModelAttribute("page") Page page,Model model){
         CustomerQueryModel cqm = null;
         if(queryJsonStr == null || queryJsonStr.trim().length() == 0){
             cqm = new CustomerQueryModel();
