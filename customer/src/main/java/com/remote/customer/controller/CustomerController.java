@@ -27,31 +27,31 @@ public class CustomerController {
     public String add(@ModelAttribute("cm") CustomerModel cm){
         cm.setRegisterTime(new Date());
         customerService.create(cm);
-        return "customer/sucess";
+        return "/customer/sucess";
     }
     @RequestMapping(value = "/toUpdate/{uuid}",method = RequestMethod.GET)
     public String toUpdate(@PathVariable("uuid") Long uuid, Model model){
         CustomerModel customerModel = customerService.getByUuid(uuid);
         model.addAttribute("cm",customerModel);
-        return "customer/update";
+        return "/customer/update";
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String update(@ModelAttribute("cm") CustomerModel cm){
         customerService.update(cm);
-        return "customer/sucess";
+        return "/customer/sucess";
     }
     @RequestMapping(value = "/toDelete",method = RequestMethod.GET)
     public String toDelete(Model model,@PathVariable("uuid") Long uuid){
         CustomerModel customerModel = customerService.getByUuid(uuid);
         model.addAttribute("cm",customerModel);
-        return "customer/delete";
+        return "/customer/delete";
     }
 
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     public String delete(@RequestParam("uuid") Long uuid){
         customerService.delete(uuid);
-        return "customer/sucess";
+        return "/customer/sucess";
     }
     @RequestMapping(value = "/toList",method = RequestMethod.GET)
     public String toList(@RequestParam("queryJsonStr")String queryJsonStr,@ModelAttribute("page") Page page,Model model){
@@ -65,12 +65,12 @@ public class CustomerController {
         Page dbPage = customerService.getByConditionPage(cqm);
         model.addAttribute("queryJsonStr",queryJsonStr);
         model.addAttribute("page",dbPage);
-        return "customer/list";
+        return "/customer/list";
     }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(@RequestParam(value = "queryJsonStr",defaultValue = "")String queryJsonStr){
         CustomerQueryModel cqm = new CustomerQueryModel();
         customerService.getByConditionPage(cqm);
-        return "customer/sucess";
+        return "/customer/sucess";
     }
 }
