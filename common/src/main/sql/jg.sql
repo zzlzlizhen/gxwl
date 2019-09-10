@@ -1,8 +1,9 @@
-/*
+﻿/*
 SQLyog Ultimate v9.20 
 MySQL - 5.7.23 : Database - jg
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -51,7 +52,7 @@ DROP TABLE IF EXISTS `main_order`;
 CREATE TABLE `main_order` (
   `uuid` bigint(16) NOT NULL AUTO_INCREMENT,
   `customerUuid` bigint(16) DEFAULT NULL,
-  `orderTime` timestamp NULL DEFAULT NULL,
+  `orderTime` datetime DEFAULT NULL,
   `totalMoney` double DEFAULT NULL,
   `saveMoney` double DEFAULT NULL,
   `state` int(11) DEFAULT NULL,
@@ -100,13 +101,13 @@ CREATE TABLE `users` (
   `pwd` varchar(40) DEFAULT NULL COMMENT '密码',
   `showName` varchar(40) DEFAULT NULL,
   `trueName` varchar(40) DEFAULT NULL,
-  `registerTime` timestamp NULL DEFAULT NULL,
+  `registerTime` datetime DEFAULT NULL,
   PRIMARY KEY (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users` */
 
-insert  into `users`(`uuid`,`customerId`,`pwd`,`showName`,`trueName`,`registerTime`) values (1,'23','1234','12','zsm',NULL),(16,'c2','111111','zsm','lz',NULL),(19,'c3','111111','zsm','lz',NULL),(21,'c4','111111','zsm','lz',NULL);
+insert  into `users`(`uuid`,`customerId`,`pwd`,`showName`,`trueName`,`registerTime`) values (1,'23','1234','12','zsm','2019-09-09 16:30:23'),(16,'c2','111111','zsm','lz','2019-09-09 16:30:25'),(19,'c3','111111','zsm','lz','2019-09-10 16:30:10'),(21,'c4','111111','zsm','lz',NULL),(31,'1','1','1','1',NULL),(32,'2','2','2','2',NULL),(33,'3','3','3','3','2019-09-09 16:36:40');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

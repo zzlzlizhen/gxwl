@@ -11,11 +11,11 @@
 	<update id="update" parameterType="CM" >
 		update users set customerId=#{customerId},pwd=#{pwd},showName=#{showName},trueName=#{trueName},registerTime=#{registerTime} where uuid = #{uuid}
 	</update>
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="java.lang.Long">
 		delete from users where uuid=#{uuid}
 	</delete>
-	<select id="getByUuid" parameterType="CM">
-		select <include refid="columns"/> from users where uuid=#{uuid}
+	<select id="getByUuid" parameterType="java.lang.Long" resultType="CM">
+		select uuid,customerId,pwd,showName,trueName,registerTime from users where uuid=#{uuid}
 	</select>
 	<select id="getByConditionPage" parameterType="CQM" resultType="CM">
 		select uuid,customerId,pwd,showName,trueName,registerTime from users

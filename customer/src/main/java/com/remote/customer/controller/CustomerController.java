@@ -2,6 +2,7 @@ package com.remote.customer.controller;
 
 import com.remote.customer.model.CustomerModel;
 import com.remote.customer.model.CustomerQueryModel;
+import com.remote.customer.model.CustomerWebModel;
 import com.remote.customer.service.impl.ICustomerService;
 import com.remote.customer.util.JsonUtils;
 import com.remote.pageutil.Page;
@@ -54,16 +55,20 @@ public class CustomerController {
         return "/customer/sucess";
     }
     @RequestMapping(value = "/toList",method = RequestMethod.GET)
-    public String toList(@RequestParam(value="queryJsonStr",defaultValue = "")String queryJsonStr,@ModelAttribute("page") Page page,Model model){
+    public String toList(@ModelAttribute(value="cwm") CustomerWebModel cwm,Model model){
         CustomerQueryModel cqm = null;
-        if(queryJsonStr == null || queryJsonStr.trim().length() == 0){
+        if(cwm.getQueryJsonStr() == null || cwm.getQueryJsonStr().trim().length() == 0){
             cqm = new CustomerQueryModel();
         }else{
-            cqm = (CustomerQueryModel) JsonUtils.string2Obj(queryJsonStr,CustomerQueryModel.class);
+            cqm = (CustomerQueryModel) JsonUtils.string2Obj(cwm.getQueryJsonStr(),CustomerQueryModel.class);
         }
-        cqm.getPage().setNowPage(page.getNowPage());
+        cqm.getPage().setNowPage(cwm.getNowPage());
+        if(cwm.getShowPage() > 0){
+            cqm.getPage().setPageShow(cwm.getShowPage());
+        }
         Page dbPage = customerService.getByConditionPage(cqm);
-        model.addAttribute("queryJsonStr",queryJsonStr);
+		/* System.out.print("--------------" + dbPage); */
+        model.addAttribute("cwm",cwm);
         model.addAttribute("page",dbPage);
         return "/customer/list";
     }
